@@ -1,0 +1,76 @@
+Descripción
+Imagina que el equipo de DevOps de la empresa TechCorp necesita un script en Python que permita a los empleados autenticarse y gestionar tareas mediante una interfaz de línea de comandos (CLI). La idea es que cada usuario se autentique antes de acceder al sistema de gestión de tareas y que todas las tareas se manejen de forma interactiva durante la ejecución del programa.
+
+
+Este ejercicio será evaluado haciendo uso de Inteligencia Artificial.
+
+Requisitos
+1.- Autenticación
+El sistema requiere que los usuarios se autentiquen antes de poder gestionar las tareas. Para esto, se usa un servicio en línea (httpbin.org) que permite verificar si las credenciales del usuario son correctas.
+
+2.- Gestión de tareas
+El sistema permitirá a los usuarios realizar las siguientes acciones:
+
+Agregar nuevas tareas con un estado predeterminado de "pendiente".
+Listar todas las tareas actuales y su estado.
+Eliminar tareas por su título.
+3.- Persistencia de datos
+Las tareas solo se almacenarán en la memoria mientras el programa esté en ejecución. No se guardarán en archivos ni bases de datos, por lo que se perderán una vez que el programa se cierre.
+
+4.- Interfaz de usuario
+Se utilizará una interfaz de línea de comandos (CLI) para que los usuarios interactúen con el sistema mediante un menú de opciones.
+
+Instrucciones
+1. Configuración del entorno
+Desde el terminal, navega al directorio donde vas a crear el proyecto.
+2. Estructura básica del script
+Crea un archivo task_manager.py donde desarrollarás la lógica principal del script.
+El script comenzará pidiendo las credenciales del usuario para la autenticación.
+Después de autenticarse, se presentará un menú con opciones para agregar, listar y eliminar tareas.
+3. Autenticación
+Utiliza la librería requests de Python para enviar una solicitud al endpoint /basic-auth/{user}/{passwd} de httpbin.org.
+Implementa una función que autentique a los usuarios. Deberán ingresar su nombre de usuario y contraseña.
+Si las credenciales son incorrectas, el sistema permitirá hasta 3 intentos antes de dar un mensaje de error.
+4. Sistema de gestión de tareas
+Después de la autenticación, se presentará un menú con las siguientes opciones:
+Agregar tarea: Solicita al usuario un título para la nueva tarea. La tarea será guardada en una lista con el estado predeterminado de "pendiente".
+Listar tareas: Muestra todas las tareas registradas, junto con su estado ("pendiente" o "completada").
+Eliminar tarea: Permite al usuario eliminar una tarea basada en su título.
+Las tareas se almacenarán en una lista en la memoria del programa mientras este esté en ejecución.
+Ejemplo de ejecución:
+Para ejecutar el script, asegúrate de estar en el directorio del proyecto y utilizar Python 3. El comando básico para ejecutar el script es el siguiente:
+
+Comando básico:
+python3 task_manager.py -u <nombre_de_usuario> -p <contraseña>
+Ejemplo:
+python3 task_manager.py -u admin -p 1234
+Esto te llevará al menú interactivo donde podrás realizar las siguientes acciones:
+
+Ingrese su nombre de usuario: admin
+Ingrese su contraseña: 1234
+Autenticación exitosa.
+
+--- Menú de Gestión de Tareas ---
+1. Agregar tarea
+2. Listar tareas
+3. Eliminar tarea
+4. Salir
+Elija una opción (1-4): 1
+Ingrese el título de la tarea: Preparar el informe mensual
+Tarea 'Preparar el informe mensual' agregada.
+
+--- Menú de Gestión de Tareas ---
+1. Agregar tarea
+2. Listar tareas
+3. Eliminar tarea
+4. Salir
+Elija una opción (1-4): 2
+1. Preparar el informe mensual [pendiente]
+
+--- Menú de Gestión de Tareas ---
+1. Agregar tarea
+2. Listar tareas
+3. Eliminar tarea
+4. Salir
+Elija una opción (1-4): 4
+Saliendo del programa.
